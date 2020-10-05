@@ -9,6 +9,7 @@ function HomeButton() {
         history.push("/home");
     }
 
+
     return (
         <button type="button" onClick={handleClick}>
             Go home
