@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const React = require("react");
 
-export default function UserPage(props) {
+export default function UserPage(props: {
+  match: { params: { id: React.ReactNode } };
+}) {
   const initialUserState = {
     user: {},
     loading: true,
+    name: undefined,
+    location: undefined,
+    blog: "",
+    followers: undefined,
   };
 
   const [user, setUser] = useState(initialUserState);
