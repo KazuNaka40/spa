@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
-const React = require("react");
 
 function HomeButton() {
   let history = useHistory();
