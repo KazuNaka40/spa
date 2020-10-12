@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function UserPage(props: {
+  location: any;
   match: { params: { id: React.ReactNode } };
 }) {
   console.log(props);
@@ -33,6 +34,7 @@ export default function UserPage(props: {
   ) : (
     <div className="container">
       <h1>{props.match.params.id}</h1>
+      <h1>{props.location.state.userName}</h1>
 
       <table>
         <thead>
