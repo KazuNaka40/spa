@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 
 export function HomePage() {
-  const [name, setName] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const [userName, setUserName] = useState("");
   let history = useHistory();
   return (
     <div className="container">
@@ -13,22 +14,34 @@ export function HomePage() {
       </p>
       <form
         onSubmit={() => {
-          console.log(name);
-          history.push("/" + name);
+          console.log(roomName);
+          history.push("/" + roomName, { userName: userName });
         }}
       >
         <h1>Hello</h1>
-        <p>Enter your name:</p>
+        <p>Enter room name:</p>
         <input
-          id="sukeko"
+          id="room"
           type="text"
-          value={name}
+          value={roomName}
           onChange={() => {
-            setName(
-              (document.getElementById("sukeko") as HTMLInputElement).value
+            setRoomName(
+              (document.getElementById("room") as HTMLInputElement).value
             );
           }}
         />
+        <p>Enter your name:</p>
+        <input
+          id="user"
+          type="text"
+          value={userName}
+          onChange={() => {
+            setUserName(
+              (document.getElementById("user") as HTMLInputElement).value
+            );
+          }}
+        />
+
         <input type="submit" value="Submit" />
       </form>
     </div>

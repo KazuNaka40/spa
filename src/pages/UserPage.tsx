@@ -4,6 +4,7 @@ import axios from "axios";
 export default function UserPage(props: {
   match: { params: { id: React.ReactNode } };
 }) {
+  console.log(props);
   const initialUserState = {
     user: {},
     loading: true,
