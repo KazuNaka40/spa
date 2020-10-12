@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 
-export function HomePage() {
-  const [roomName, setRoomName] = useState("");
+export function HomePage(props: { location: any }) {
+  console.log(props);
+  const roomNameFromState = props.location.state
+    ? props.location.state.roomName
+    : "";
+  const [roomName, setRoomName] = useState(roomNameFromState);
   const [userName, setUserName] = useState("");
   let history = useHistory();
   return (

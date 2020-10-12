@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export default function UserPage(props: {
   location: any;
   match: { params: { id: React.ReactNode } };
 }) {
+  let history = useHistory();
+  if (!props.location.state) {
+    history.push("/", { roomName: props.match.params.id });
+  }
   console.log(props);
   const initialUserState = {
     user: {},
