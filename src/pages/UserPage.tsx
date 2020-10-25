@@ -10,7 +10,6 @@ export default function UserPage(props: {
   if (!props.location.state) {
     history.push("/", { roomName: props.match.params.id });
   }
-  console.log(props);
   const initialUserState = {
     user: {},
     loading: true,
