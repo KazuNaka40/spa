@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
-export function HomePage(props: { location: any }) {
+type StateType = {
+  roomName: string;
+};
+type IndexProps = RouteComponentProps<{}, {}, StateType>;
+
+export function HomePage(props: IndexProps) {
+  console.log(props);
   const roomNameFromState = props.location.state
     ? props.location.state.roomName
     : "";

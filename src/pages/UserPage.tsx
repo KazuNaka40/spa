@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { RouteComponentProps, useHistory } from "react-router-dom";
 
-export default function UserPage(props: {
-  location: any;
-  match: { params: { id: React.ReactNode } };
-}) {
+type IndexProps = RouteComponentProps<
+  { roomName: string },
+  {},
+  { userName: string }
+>;
+
+export default function UserPage(props: IndexProps) {
   let history = useHistory();
   if (!props.location.state) {
-    history.push("/", { roomName: props.match.params.id });
+    history.push("/", { roomName: props.match.params.roomName });
   }
   const initialUserState = {
     user: {},
@@ -24,20 +27,20 @@ export default function UserPage(props: {
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios(
-        `https://api.github.com/users/${props.match.params.id}`
+        `https://api.github.com/users/${props.match.params.roomName}`
       );
 
       setUser(data);
     };
 
     getUser();
-  }, [props.match.params.id]);
+  }, [props.match.params.roomName]);
 
   return user.loading ? (
     <div>Loading...</div>
   ) : (
     <div className="container">
-      <h1>{props.match.params.id}</h1>
+      <h1>{props.match.params.roomName}</h1>
       <h1>{props.location.state.userName}</h1>
 
       <table>
